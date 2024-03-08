@@ -86,7 +86,7 @@ parser.parseName = function (name, opts = {}) {
 				current = current.replace(',', '');
 
 				// handle case where suffix is included in part of last name (ie: 'Hearst Jr., Willian Randolph')
-				if (suffixes.indexOf(current.toLowerCase().replace(/\./g, '')) > -1) {
+				if (lastName.length > 0 && suffixes.indexOf(current.toLowerCase().replace(/\./g, '')) > -1) {
 					attrs.suffix = current;
 				} else {
 					lastName.push(current);
