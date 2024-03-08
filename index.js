@@ -42,9 +42,9 @@ parser.parseName = function (name, opts = {}) {
 	let parts = name
 		.trim()
 		.replace(/\b\s+(,\s+)\b/, '$1') // fix name , suffix -> name, suffix
-		.replace(/\b,\b/, ', ')         // fix name,suffix -> name, suffix
+		.replace(/\b,\b/, ', ');         // fix name,suffix -> name, suffix
 	// look for quoted compound names
-	parts = (parts.match(/[^\s"]+|"[^"]+"/g) || parts.split(/\s+/)).map(n => n.match(/^".*"$/) ? n.slice(1, -1) : n)
+	parts = (parts.match(/[^\s"]+|"[^"]+"/g) || parts.split(/\s+/)).map(n => n.match(/^".*"$/) ? n.slice(1, -1) : n);
 	const attrs = {};
 
 	if (!parts.length) {
@@ -113,9 +113,9 @@ parser.parseName = function (name, opts = {}) {
 			nameWords.push(attrs.firstName);
 		}
 		if (attrs.middleName) {
-			nameWords.push(attrs.middleName)
+			nameWords.push(attrs.middleName);
 		}
-		nameWords.push(attrs.lastName)
+		nameWords.push(attrs.lastName);
 		if (attrs.suffix) {
 			nameWords.push(attrs.suffix);
 		}
@@ -184,7 +184,7 @@ parser.parseName = function (name, opts = {}) {
 	//console.log('attrs:', JSON.stringify(attrs));
 
 	for (const [k, v] of Object.entries(attrs)) {
-		attrs[k] = v.trim()
+		attrs[k] = v.trim();
 	}
 	return attrs;
 };
