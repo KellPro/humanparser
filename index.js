@@ -54,13 +54,7 @@ parser.parseName = function (name, opts = {}) {
 	if (parts.length === 1) {
 		attrs.firstName = parts[0];
 	}
-
-	//handle suffix first always, remove trailing comma if there is one
-	if (parts.length > 1 && suffixes.indexOf(parts[parts.length - 1].toLowerCase().replace(/\./g, '')) > -1) {
-		attrs.suffix = parts.pop();
-		parts[parts.length - 1] = parts[parts.length - 1].replace(',', '');
-	}
-
+	
 	//look for a comma to know we have last name first format
 	const firstNameFirstFormat = parts.every(part => {
 		return part.indexOf(',') === -1;
@@ -137,6 +131,10 @@ parser.parseName = function (name, opts = {}) {
 			}
 		} else {
 			attrs.firstName = parts.shift();
+		}
+
+		if (suffixes.includes(parts.at(-1).toLowerCase())) {
+			attrs.suffix = `${(attrs.suffix || '')} ${parts.pop()}`;
 		}
 
 		if (!attrs.lastName) {
