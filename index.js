@@ -133,7 +133,7 @@ parser.parseName = function (name, opts = {}) {
 			attrs.firstName = parts.shift();
 		}
 
-		if (suffixes.includes(parts.at(-1).toLowerCase())) {
+		if (parts.length && suffixes.includes(parts.at(-1).toLowerCase())) {
 			attrs.suffix = `${(attrs.suffix || '')} ${parts.pop()}`;
 		}
 
